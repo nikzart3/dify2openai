@@ -19,12 +19,12 @@ function generateId() {
   return result;
 }
 const app = express();
+// Configure CORS
 const corsOptions = {
-  origin: 'https://askustax.com',
+  origin: '*', // Allow requests from any origin
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
-
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 const botType = process.env.BOT_TYPE || 'Chat';
