@@ -19,7 +19,13 @@ function generateId() {
   return result;
 }
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: 'https://askustax.com',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 const botType = process.env.BOT_TYPE || 'Chat';
 const inputVariable = process.env.INPUT_VARIABLE || '';
